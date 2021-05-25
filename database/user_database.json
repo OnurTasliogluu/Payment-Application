@@ -1,0 +1,56 @@
+{
+    "general_information": {
+        "users_count": 3
+    },
+
+    "users_list" : [
+        {
+            "id": 1,
+            "user_name": "test_name_1",
+            "user_surname": "test_surname_1",
+            "account_id": "1111111111",
+            "bank_information": [
+                {
+                    "bank_name": "AKBANK",
+                    "balance": "10000"
+                },
+                {
+                    "bank_name": "YAPI_KREDI",
+                    "balance": "10000"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "user_name": "test_name_2",
+            "user_surname": "test_surname_2",
+            "account_id": "2222222222",
+            "bank_information": [
+                {
+                    "bank_name": "AKBANK",
+                    "balance": "20000"
+                },
+                {
+                    "bank_name": "YAPI_KREDI",
+                    "balance": "20000"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "user_name": "test_name_3",
+            "user_surname": "test_surname_3",
+            "account_id": "3333333333",
+            "bank_information": [
+                {
+                    "bank_name": "AKBANK",
+                    "balance": "30000"
+                },
+                {
+                    "bank_name": "YAPI_KREDI",
+                    "balance": "30000"
+                }
+            ]
+        }
+    ]
+}
