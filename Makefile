@@ -21,7 +21,7 @@ rm       = rm -f
 
 $(BINDIR)/$(TARGET): $(OBJECTS)
 	@echo $(LINKER) $(OBJECTS) $(LFLAGS)	-I$(INCDIR) -o $@
-	@$(LINKER)	main.c $(OBJECTS) $(LFLAGS)	-I$(INCDIR) -o $@
+	@$(LINKER)	$(TARGET).c $(OBJECTS) $(LFLAGS)	-I$(INCDIR) -o $@
 	@echo "Linking complete!"
 
 $(OBJECTS): $(OBJDIR)/%.o : $(SRCDIR)/%.c

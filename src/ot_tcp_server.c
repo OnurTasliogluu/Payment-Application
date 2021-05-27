@@ -18,8 +18,8 @@
 
 #include "ot_tcp_server.h"
 
-void ot_tcp_server_send_packet(void* this, void *data, uint32_t size) {
-    printf("SEND DATA\n");
+void ot_tcp_server_send_packet(ot_tcp_server_t* this, void *data, uint32_t size, uint32_t i) {
+    int result = write(this->ot_epoll->events[i].data.fd, data, size);
 }
 
 void ot_tcp_server_socket_create(ot_tcp_server_t* this)
@@ -62,11 +62,11 @@ void ot_tcp_server_socket_create(ot_tcp_server_t* this)
 void ot_tcp_server_loop(ot_tcp_server_t* this)
 {
     printf("ot_tcp_server_loop LOOP\n");
-    int i;
-    int result;
+    uint32_t i;
+    int32_t result;
     char input[100];
     char data[4096];
-    int ret;
+    int32_t ret;
     char hello[] = "hello world!\n";
     epoll_event_t ev;
     for (;;)
@@ -116,7 +116,7 @@ void ot_tcp_server_loop(ot_tcp_server_t* this)
                     }
                 }
                 printf("data=%s\n",data);
-                this->ot_tcp_server_receive_packet((void*)this, (void*)data);
+                this->ot_tcp_server_receive_packet((void*)this, (void*)data, i);
             }
         }
     }

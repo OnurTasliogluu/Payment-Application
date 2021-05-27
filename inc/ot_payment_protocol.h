@@ -31,7 +31,7 @@ void ot_payment_protocol_deinit(ot_payment_protocol_t *this);
 void ot_payment_protocol_destroy(ot_payment_protocol_t *this);
 void ot_payment_protocol_test();
 
-void ot_payment_protocol_data_parser(ot_payment_protocol_t *this, void *data);
+//void ot_payment_protocol_data_parser(ot_payment_protocol_t *this, void *data);
 void ot_payment_protocol_data_fill_bank_and_balance(ot_payment_protocol_t *this, void *data);
 void ot_payment_protocol_loop(ot_payment_protocol_t *this);
 

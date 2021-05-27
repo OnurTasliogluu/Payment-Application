@@ -10,7 +10,7 @@ typedef struct {
 
     int32_t server_socket_descripter;
     int32_t client_size;
-    void (*ot_tcp_server_receive_packet)(void*, void*);
+    void (*ot_tcp_server_receive_packet)(void*, void*, uint32_t);
     void (*ot_tcp_server_send_packet)(void*, void*, uint32_t);
 } ot_tcp_server_t;
 

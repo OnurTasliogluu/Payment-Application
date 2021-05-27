@@ -1,13 +1,21 @@
 #include "ot_payment_protocol.h"
 
-static void ot_payment_protocol_receive(void *this, void *data);
+static void ot_payment_protocol_receive(void *this, void *data, uint32_t);
+static void ot_payment_protocol_data_parser(void *data);
 
-static void ot_payment_protocol_receive(void *self, void *data) {
+typedef struct {
+    uint32_t op_code;
+    uint8_t username[NORMAL_STRING_SIZE];
+    uint8_t surname[NORMAL_STRING_SIZE];
+    uint8_t password[NORMAL_STRING_SIZE];
+} ot_login_data_t;
+
+static void ot_payment_protocol_receive(void *self, void *data, uint32_t i) {
     printf("PACKET RECEIVE\n");
-    uint8_t *test_data = "NEW HELLO WORLD!";
+    /*uint8_t *test_data = "NEW HELLO WORLD!";
     ot_tcp_server_t *this = self;
-    ot_tcp_server_send_packet(this, (void*)test_data, 15);
-    //ot_payment_protocol_data_parser(data);
+    ot_tcp_server_send_packet(this, (void*)test_data, 15, i);*/
+    ot_payment_protocol_data_parser(data);
 }
 
 static void ot_payment_protocol_send(void *data) {
@@ -15,23 +23,29 @@ static void ot_payment_protocol_send(void *data) {
 }
 
 static void f_login(ot_payment_data_t *data) {
-    printf("LOGIN");
+    printf("LOGIN\n");
+    ot_login_data_t *login_data = data;
+    printf("username=%s\n", login_data->username);
+    printf("surname=%s\n", login_data->surname);
+    printf("password=%s\n", login_data->password);
+    // Check Username Surname Password from database
+    // send session_id
 }
 
 static void f_login_accept(ot_payment_data_t *data) {
-    printf("ACCEPT");
+    printf("ACCEPT\n");
 }
 
 static void f_login_reject(ot_payment_data_t *data) {
-    printf("REJECT");
+    printf("REJECT\n");
 }
 
 static void f_get_user_information(ot_payment_data_t *data) {
-    printf("INFORMATION");
+    printf("INFORMATION\n");
 }
 
 static void f_send_bank_and_balanced(ot_payment_data_t *data) {
-    printf("BALANCE");
+    printf("BALANCE\n");
 }
 
 static void (*parser_function_list[5])() = {f_login, f_login_accept, f_login_reject, f_get_user_information, f_send_bank_and_balanced};
